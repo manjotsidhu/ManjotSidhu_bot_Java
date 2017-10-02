@@ -1,0 +1,13 @@
+{
+  "start": "java -cp target/classes:'target/dependency/*' Main",
+  "install": "mvn compile",
+  "watch": {
+    "throttle": 500,
+    "install": {
+      "include": [
+        "^pom\\.xml$",
+        "\\.java$"
+      ]
+    }
+  }
+}
