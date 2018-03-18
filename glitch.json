@@ -1,6 +1,6 @@
 {
   "start": "java -cp target/classes:'target/dependency/*' Main",
-  "install": "mvn compile",
+  "install": "echo 'compiling' && mvn compile",
   "watch": {
     "throttle": 500,
     "install": {
