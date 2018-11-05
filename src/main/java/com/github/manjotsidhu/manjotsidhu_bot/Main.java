@@ -21,7 +21,7 @@ public class Main {
         TelegramBotsApi botsApi = new TelegramBotsApi();
 
         try {
-            botsApi.registerBot(new ManjotSidhuBot(botToken));
+            botsApi.registerBot(new ManjotSidhuBot(botToken, "Manjot Sidhu Bot"));
         } catch (TelegramApiException e) {
             e.printStackTrace();
         }

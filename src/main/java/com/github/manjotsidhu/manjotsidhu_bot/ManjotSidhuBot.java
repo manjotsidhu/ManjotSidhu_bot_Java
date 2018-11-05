@@ -2,17 +2,18 @@ package com.github.manjotsidhu.manjotsidhu_bot;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import org.telegram.telegrambots.bots.TelegramLongPollingBot;
+import org.telegram.abilitybots.api.bot.AbilityBot;
+import org.telegram.abilitybots.api.objects.Ability;
+import static org.telegram.abilitybots.api.objects.Locality.ALL;
+import static org.telegram.abilitybots.api.objects.Privacy.PUBLIC;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 
-public class ManjotSidhuBot extends TelegramLongPollingBot {
+public class ManjotSidhuBot extends AbilityBot {
 
-    String botToken = "";
-
-    ManjotSidhuBot(String token) {
-        botToken = token;
+    ManjotSidhuBot(String botToken, String username) {
+        super(botToken, username);
     }
 
     @Override
@@ -31,7 +32,7 @@ public class ManjotSidhuBot extends TelegramLongPollingBot {
                 SendMessage message = new SendMessage()
                         .setChatId(chatId)
                         .setReplyToMessageId(inputId)
-                        .setText("Test Passed");
+                        .setText(String.valueOf(chatId));
 
                 try {
                     execute(message); // Call method to send the message
@@ -42,7 +43,7 @@ public class ManjotSidhuBot extends TelegramLongPollingBot {
                 SendMessage message = new SendMessage()
                         .setChatId(chatId)
                         .setReplyToMessageId(inputId)
-                        .setText(Templates.ERROR);
+                        .setText(Strings.ERROR);
 
                 try {
                     execute(message); // Call method to send the message
@@ -54,16 +55,18 @@ public class ManjotSidhuBot extends TelegramLongPollingBot {
     }
 
     @Override
-    public String getBotUsername() {
-        return "Manjot Sidhu Bot";
+    public int creatorId() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    @Override
-    public String getBotToken() {
-        if (botToken.equals("")) {
-            System.err.println("Bot API token not set");
-            System.exit(1);
-        }
-        return botToken;
+    public Ability sayHelloWorld() {
+        return Ability
+                  .builder()
+                  .name("hello")
+                  .info("says hello world!")
+                  .locality(ALL)
+                  .privacy(PUBLIC)
+                  .action(ctx -> silent.send("Hello world!", ctx.chatId()))
+                  .build();
     }
 }
