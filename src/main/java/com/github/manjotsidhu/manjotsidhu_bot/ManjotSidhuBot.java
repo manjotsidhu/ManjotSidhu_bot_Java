@@ -16,6 +16,7 @@ public class ManjotSidhuBot extends AbilityBot {
         super(botToken, username);
     }
 
+    /*
     @Override
     public void onUpdateReceived(Update update) {
         // We check if the update has a message and the message has text
@@ -52,7 +53,7 @@ public class ManjotSidhuBot extends AbilityBot {
                 }
             }
         }
-    }
+    }*/
 
     @Override
     public int creatorId() {

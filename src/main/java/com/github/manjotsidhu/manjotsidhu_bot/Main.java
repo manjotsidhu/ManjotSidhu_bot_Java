@@ -3,7 +3,8 @@ package com.github.manjotsidhu.manjotsidhu_bot;
 import java.util.Scanner;
 import org.telegram.telegrambots.ApiContextInitializer;
 import org.telegram.telegrambots.meta.TelegramBotsApi;
-import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
+import org.telegram.telegrambots.meta.exceptions.TelegramApiRequestException;
+import org.telegram.telegrambots.meta.logging.BotLogger;
 
 public class Main {
     public static void main(String[] args) {
@@ -22,8 +23,8 @@ public class Main {
 
         try {
             botsApi.registerBot(new ManjotSidhuBot(botToken, "Manjot Sidhu Bot"));
-        } catch (TelegramApiException e) {
-            e.printStackTrace();
+        } catch (TelegramApiRequestException e) {
+            BotLogger.error("Oops, something went wrong while registering bot", e);
         }
     }
 }
