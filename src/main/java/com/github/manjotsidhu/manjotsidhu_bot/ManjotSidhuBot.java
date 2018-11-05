@@ -56,7 +56,7 @@ public class ManjotSidhuBot extends AbilityBot {
 
     @Override
     public int creatorId() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return 444939907;
     }
 
     public Ability sayHelloWorld() {
